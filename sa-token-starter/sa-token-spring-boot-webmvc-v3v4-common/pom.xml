@@ -42,7 +42,21 @@
 			<groupId>cn.dev33</groupId>
 			<artifactId>sa-token-spring-boot-webmvc-reactor-v2v3v4-common</artifactId>
 		</dependency>
-		
+
+		<!-- 测试：sa-token-core 测试工具（@SaTokenTest / SaTokenExtension） -->
+		<dependency>
+			<groupId>cn.dev33</groupId>
+			<artifactId>sa-token-core</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -55,6 +69,13 @@
 				<version>${revision}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<!-- starter-test 版本与上方 springboot3.version 保持一致（BOM 未管理该构件） -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>3.5.11</version>
 			</dependency>
 
 		</dependencies>

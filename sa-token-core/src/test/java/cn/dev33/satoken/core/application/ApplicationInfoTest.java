@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ApplicationInfoTest {
 
+	/** 测完把路由前缀复位 */
 	@AfterEach
 	void resetRoutePrefix() {
 		ApplicationInfo.routePrefix = null;

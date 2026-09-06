@@ -27,10 +27,12 @@ public class TestSaTokenPlugin implements SaTokenPlugin {
 
 	static volatile boolean installed;
 
+	/** 把安装标记清掉，方便下一个用例重新装插件 */
 	public static void reset() {
 		installed = false;
 	}
 
+	/** 标记这个测试插件已经装上了 */
 	@Override
 	public void install() {
 		installed = true;

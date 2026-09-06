@@ -28,6 +28,7 @@ public final class SaTestRouteMatcher {
 	private SaTestRouteMatcher() {
 	}
 
+	/** 把策略里的路由匹配器换成测试用的简易 Ant 风格实现 */
 	public static void installAntStyleMatcher() {
 		SaStrategy.instance.routeMatcher = SaTestRouteMatcher::match;
 	}

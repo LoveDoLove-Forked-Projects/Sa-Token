@@ -29,6 +29,7 @@ import org.junit.jupiter.api.Test;
  */
 public class OAuth2TokenModelNeverExpireTest {
 
+	/** 用例结束后清掉全局状态 */
 	@AfterEach
 	public void cleanup() {
 		SaOAuth2Manager.getDao().deleteAccessToken("never-at");
@@ -36,6 +37,7 @@ public class OAuth2TokenModelNeverExpireTest {
 		SaOAuth2Manager.getDao().deleteClientToken("never-ct");
 	}
 
+	/** expiresTime 为永不过期时，getExpiresIn 应该返回 NEVER_EXPIRE */
 	@Test
 	public void getExpiresIn_neverExpire() {
 		AccessTokenModel at = new AccessTokenModel();
@@ -53,6 +55,7 @@ public class OAuth2TokenModelNeverExpireTest {
 		Assertions.assertEquals(SaTokenDao.NEVER_EXPIRE, ct.getExpiresIn());
 	}
 
+	/** 已经过期的 token，getExpiresIn 应该返回 NOT_VALUE_EXPIRE */
 	@Test
 	public void getExpiresIn_alreadyExpired_stillNotValue() {
 		ClientTokenModel ct = new ClientTokenModel();
@@ -60,6 +63,7 @@ public class OAuth2TokenModelNeverExpireTest {
 		Assertions.assertEquals(SaTokenDao.NOT_VALUE_EXPIRE, ct.getExpiresIn());
 	}
 
+	/** 存一个永不过期的 token 后应该能读回来 */
 	@Test
 	public void save_neverExpire_canReadBack() {
 		AccessTokenModel at = new AccessTokenModel();

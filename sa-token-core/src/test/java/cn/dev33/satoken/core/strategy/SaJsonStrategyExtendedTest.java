@@ -34,11 +34,13 @@ public class SaJsonStrategyExtendedTest {
 
 	private final SaJsonStrategy strategy = SaJsonStrategy.instance;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	void setUp() {
 		strategy.resetState();
 	}
 
+	/** 每个用例结束后把测试现场清掉 */
 	@AfterEach
 	void tearDown() {
 		strategy.resetState();

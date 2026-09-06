@@ -71,6 +71,7 @@ public class SaStrategyTest {
 	private SaCorsHandleFunction savedCorsHandle;
 	private SaGetSaTokenConfigFunction savedGetSaTokenConfig;
 
+	/** 先把策略状态存一份 */
 	@BeforeEach
 	void saveStrategy() {
 		SaStrategy s = SaStrategy.instance;
@@ -88,6 +89,7 @@ public class SaStrategyTest {
 		savedGetSaTokenConfig = s.getSaTokenConfig;
 	}
 
+	/** 把策略状态恢复回去 */
 	@AfterEach
 	void restoreStrategy() {
 		SaStrategy s = SaStrategy.instance;

@@ -43,6 +43,7 @@ import java.util.List;
 @SaTokenTest
 public class SaRequestForServletTest {
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         ApplicationInfo.routePrefix = null;

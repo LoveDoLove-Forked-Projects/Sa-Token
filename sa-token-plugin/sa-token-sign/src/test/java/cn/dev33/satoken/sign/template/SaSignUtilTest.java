@@ -38,6 +38,7 @@ public class SaSignUtilTest {
 
     private static final String KEY = "SwqFmsKxcbq23";
 
+    /** 每个用例开始前准备一份干净的模板 */
     @BeforeEach
     public void setupTemplate() {
         // 给全局 SaSignTemplate 配置秘钥，使 SaSignUtil 委托调用可正常工作

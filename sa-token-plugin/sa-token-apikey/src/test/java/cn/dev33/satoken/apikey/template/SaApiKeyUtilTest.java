@@ -45,6 +45,7 @@ public class SaApiKeyUtilTest {
     private SaApiKeyTemplate backupTemplate;
     private SaApiKeyTemplate template;
 
+    /** 把全局状态恢复回去 */
     @BeforeEach
     public void setup() {
         backupConfig = SaApiKeyManager.getConfig();
@@ -55,6 +56,7 @@ public class SaApiKeyUtilTest {
         SaApiKeyManager.setSaApiKeyTemplate(template);
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaApiKeyManager.setConfig(backupConfig);

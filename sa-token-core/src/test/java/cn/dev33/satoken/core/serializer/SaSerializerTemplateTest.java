@@ -35,6 +35,7 @@ import java.util.Map;
 @SaTokenTest
 public class SaSerializerTemplateTest {
 
+	/** 每个用例开始前准备 JSON 模板 */
 	@BeforeEach
 	void setUpJsonTemplate() {
 		SaManager.setSaJsonTemplate(new SimpleSaJsonTemplate());

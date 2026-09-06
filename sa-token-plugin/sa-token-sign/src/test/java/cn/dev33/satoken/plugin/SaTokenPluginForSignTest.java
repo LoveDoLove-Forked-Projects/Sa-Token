@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SaTokenPluginForSignTest {
 
+    /** 用例结束后清掉全局状态 */
     @AfterEach
     public void cleanup() {
         // 移除本测试 install 注册的处理器，避免污染其他测试

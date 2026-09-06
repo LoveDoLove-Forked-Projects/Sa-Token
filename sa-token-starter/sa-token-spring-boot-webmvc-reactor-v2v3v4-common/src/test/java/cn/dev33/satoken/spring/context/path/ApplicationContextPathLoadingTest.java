@@ -29,12 +29,14 @@ public class ApplicationContextPathLoadingTest {
 
     private String originalRoutePrefix;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void setUp() {
         originalRoutePrefix = ApplicationInfo.routePrefix;
         ApplicationInfo.routePrefix = null;
     }
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         ApplicationInfo.routePrefix = originalRoutePrefix;

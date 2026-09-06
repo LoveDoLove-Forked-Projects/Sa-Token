@@ -40,6 +40,7 @@ public class SaTokenContextForThreadLocalTest {
 
 	private final SaTokenContextForThreadLocal context = new SaTokenContextForThreadLocal();
 
+	/** 清掉 ThreadLocal，避免上下文串到下一个用例 */
 	@BeforeEach
 	@AfterEach
 	void clearThreadLocal() {

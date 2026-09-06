@@ -40,6 +40,7 @@ public class SaTokenDaoFollowTest {
 
 	private final ObjectFollowStringDao dao = new ObjectFollowStringDao();
 
+	/** 每个用例开始前准备序列化器 */
 	@BeforeEach
 	void setUpSerializer() {
 		SaManager.setSaSerializerTemplate(new SaSerializerTemplateForJdkUseHex());

@@ -26,6 +26,7 @@ import org.springframework.util.PathMatcher;
  */
 public class SaPathMatcherHolderTest {
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         SaPathMatcherHolder.pathMatcher = null;

@@ -45,16 +45,19 @@ public class SaTokenDaoForRedisTemplateUseJdkSerializerTest {
 
 	private SaTokenDaoForRedisTemplateUseJdkSerializer dao;
 
+	/** 启动无密码的内嵌 Redis，端口随机 */
 	@BeforeAll
 	static void startRedis() throws IOException {
 		redisServer = JedisMockRedisSupport.startServer();
 	}
 
+	/** 测完把内嵌 Redis 关掉 */
 	@AfterAll
 	static void stopRedis() throws IOException {
 		JedisMockRedisSupport.stopServer(redisServer);
 	}
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	void setUp() {
 		connectionFactory = JedisMockRedisSupport.createFactory(redisServer);
@@ -63,6 +66,7 @@ public class SaTokenDaoForRedisTemplateUseJdkSerializerTest {
 		JedisMockRedisSupport.flushDb(connectionFactory);
 	}
 
+	/** 每个用例结束后把测试现场清掉 */
 	@AfterEach
 	void tearDown() {
 		JedisMockRedisSupport.destroyFactory(connectionFactory);

@@ -33,6 +33,7 @@ public class SaRequestForMockTest {
 
 	private SaRequestForMock request;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	void setUp() {
 		request = new SaRequestForMock();

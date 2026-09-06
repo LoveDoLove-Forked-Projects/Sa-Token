@@ -45,11 +45,13 @@ public class SaApplicationGetValueInterfaceTest {
 
 	private SaJsonTemplate previousJsonTemplate;
 
+	/** 先把 JSON 模板存一份 */
 	@BeforeEach
 	void captureJsonTemplate() {
 		previousJsonTemplate = SaManager.getSaJsonTemplate();
 	}
 
+	/** 用例结束后清掉全局状态 */
 	@AfterEach
 	void cleanup() {
 		SaHolder.getApplication().clear();

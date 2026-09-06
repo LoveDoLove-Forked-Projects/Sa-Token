@@ -32,6 +32,7 @@ public class SaSsoClientTemplateBuildServerAuthUrlTest {
 	private SaSsoClientConfig backupClientConfig;
 	private SaSsoClientTemplate template;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	public void setup() {
 		backupClientConfig = SaSsoManager.getClientConfig();
@@ -39,17 +40,20 @@ public class SaSsoClientTemplateBuildServerAuthUrlTest {
 		template = new SaSsoClientTemplate();
 	}
 
+	/** 把全局状态恢复回去 */
 	@AfterEach
 	public void restore() {
 		SaSsoManager.setClientConfig(backupClientConfig);
 	}
 
+	/** clientLoginUrl 没有 back 参数时应该补上 */
 	@Test
 	public void appendBack_whenClientLoginUrlHasNoBack() {
 		String url = template.buildServerAuthUrl("http://client.com/sso/login", "http://client.com/index");
 		Assertions.assertTrue(url.contains("?back=" + SaFoxUtil.encodeUrl("http://client.com/index")));
 	}
 
+	/** URL 里已经有 ?back= 时不应该再补一份 */
 	@Test
 	public void skipAppend_whenPlainQuestionBackAlreadyPresent() {
 		String clientLoginUrl = "http://client.com/sso/login?back=http://client.com/index";
@@ -58,6 +62,7 @@ public class SaSsoClientTemplateBuildServerAuthUrlTest {
 		Assertions.assertFalse(url.contains("&back="));
 	}
 
+	/** URL 里已经有 &back= 时不应该再补一份 */
 	@Test
 	public void skipAppend_whenPlainAmpersandBackAlreadyPresent() {
 		String clientLoginUrl = "http://client.com/sso/login?foo=1&back=http://client.com/index";
@@ -66,12 +71,14 @@ public class SaSsoClientTemplateBuildServerAuthUrlTest {
 		Assertions.assertEquals(1, countIgnoreCase(url, "&back="));
 	}
 
+	/** 参数名只是长得像 back 时还是应该补上真正的 back */
 	@Test
 	public void stillAppend_whenParamNameOnlyLooksLikeBack() {
 		String url = template.buildServerAuthUrl("http://client.com/sso/login?abcback=1", "http://client.com/index");
 		Assertions.assertTrue(url.contains("&back=" + SaFoxUtil.encodeUrl("http://client.com/index")));
 	}
 
+	/** back 为空时不应该往 URL 上拼 */
 	@Test
 	public void skipAppend_whenBackIsEmpty() {
 		String clientLoginUrl = "http://client.com/sso/login";

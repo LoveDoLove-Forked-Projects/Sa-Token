@@ -80,6 +80,7 @@ public final class SaTokenTestContext {
 			this.stpLogicMap = stpLogicMap;
 		}
 
+		/** 把捕获时的 SaManager 全局状态写回去 */
 		public void restore() {
 			if (config != null) {
 				SaManager.setConfig(config);

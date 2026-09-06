@@ -55,6 +55,7 @@ public class StpLogicJwtForStatelessTest {
 
     private StpLogicJwtForStateless stpLogic;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void beforeEach() {
         // @SaTokenTest 已把全局状态复位为默认配置，这里补上 jwt 秘钥

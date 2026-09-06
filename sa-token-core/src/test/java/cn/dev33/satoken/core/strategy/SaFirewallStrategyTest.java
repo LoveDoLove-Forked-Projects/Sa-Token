@@ -49,12 +49,14 @@ public class SaFirewallStrategyTest {
 	private List<SaFirewallCheckHook> originalHooks;
 	private List<String> originalWhitePaths;
 
+	/** 把状态恢复回去 */
 	@BeforeEach
 	void saveState() {
 		originalHooks = new ArrayList<>(strategy.checkHooks);
 		originalWhitePaths = new ArrayList<>(SaFirewallCheckHookForWhitePath.instance.whitePaths);
 	}
 
+	/** 把状态恢复回去 */
 	@AfterEach
 	void restoreState() {
 		strategy.checkHooks.clear();

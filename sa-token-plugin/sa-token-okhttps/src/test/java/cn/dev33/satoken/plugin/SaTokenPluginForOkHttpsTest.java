@@ -35,12 +35,14 @@ public class SaTokenPluginForOkHttpsTest {
 
     private SaHttpTemplate backupTemplate;
 
+    /** 把全局状态恢复回去 */
     @BeforeEach
     public void backup() {
         // 记录安装前的全局模板，测完恢复，避免影响同 JVM 的其它用例
         backupTemplate = SaManager.getSaHttpTemplate();
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaManager.setSaHttpTemplate(backupTemplate);

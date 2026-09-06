@@ -42,6 +42,7 @@ public class SaFirewallCheckFilterForJakartaServletTest {
     private SaFirewallCheckFunction backupCheck;
     private SaFirewallCheckFailHandleFunction backupFailHandle;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void setUp() {
         JakartaServletTestHelper.ensureServletStrategy();
@@ -49,6 +50,7 @@ public class SaFirewallCheckFilterForJakartaServletTest {
         backupFailHandle = SaFirewallStrategy.instance.checkFailHandle;
     }
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         SaFirewallStrategy.instance.check = backupCheck;

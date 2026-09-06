@@ -32,14 +32,14 @@ import cn.dev33.satoken.util.SaResult;
  */
 public class MoreIntegrationTest extends AbstractMockMvcIntegrationTest {
 
-	// 基础API测试 
+	/** 基础 API 应该能正常调通 */
 	@Test
 	public void testApi() {
 		SaResult res = requestWithDivHeader("/more/getInfo?name=zhang");
 		Assertions.assertEquals(res.getData(), true);
 	}
 
-	// Http Basic 认证 
+	/** Http Basic 认证失败应该 401，带正确头时应该通过 */
 	@Test
 	public void testBasic() throws Exception {
 		

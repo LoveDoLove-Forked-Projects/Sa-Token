@@ -32,6 +32,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class SaTokenPluginHolderInitTest {
 
+	/** 每个用例开始前把插件状态复位 */
 	@BeforeEach
 	void resetPlugins() {
 		TestSaTokenPlugin.reset();

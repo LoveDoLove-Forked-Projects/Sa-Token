@@ -22,19 +22,19 @@ import org.junit.jupiter.api.Test;
  */
 public class SaSerializerTemplateTest {
 
-	// 开始 
+	/** 整个测试类开始前做一次性准备 */
 	@BeforeAll
     public static void beforeClass() {
     	System.out.println("\n\n------------------------ SaSerializerTemplateTest star ...");
     }
 
-	// 结束 
+    /** 整个测试类结束后做一次性清理 */
     @AfterAll
     public static void afterClass() {
     	System.out.println("\n\n------------------------ SaSerializerTemplateTest end ... \n");
     }
 
-    // 测试：SaSerializerTemplateForJdkUseBase64
+    /** 测试 JDK + Base64 序列化往返 */
     @Test
     public void testSaSerializerTemplateForJdkUseBase64() {
         SaManager.setSaSerializerTemplate(new SaSerializerTemplateForJdkUseBase64());
@@ -53,7 +53,7 @@ public class SaSerializerTemplateTest {
         testNull();
     }
 
-    // 测试：SaSerializerTemplateForJdkUseHex
+    /** 测试 JDK + Hex 序列化往返 */
     @Test
     public void testSaSerializerTemplateForJdkUseHex() {
         SaManager.setSaSerializerTemplate(new SaSerializerTemplateForJdkUseHex());
@@ -72,7 +72,7 @@ public class SaSerializerTemplateTest {
         testNull();
     }
 
-    // 测试：SaSerializerTemplateForJdkUseISO_8859_1
+    /** 测试 JDK + ISO-8859-1 序列化往返 */
     @Test
     public void testSaSerializerTemplateForJdkUseISO_8859_1() {
         SaManager.setSaSerializerTemplate(new SaSerializerTemplateForJdkUseISO_8859_1());
@@ -91,7 +91,7 @@ public class SaSerializerTemplateTest {
         testNull();
     }
 
-    // 测试：SaSerializerForBase64UseTianGan
+    /** 测试 Base64 天干表序列化往返 */
     @Test
     public void testSaSerializerForBase64UseTianGan() {
         SaManager.setSaSerializerTemplate(new SaSerializerForBase64UseTianGan());
@@ -110,7 +110,7 @@ public class SaSerializerTemplateTest {
         testNull();
     }
 
-    // 测试：SaSerializerForBase64UsePeriodicTable
+    /** 测试 Base64 元素周期表序列化往返 */
     @Test
     public void testSaSerializerForBase64UsePeriodicTable() {
         SaManager.setSaSerializerTemplate(new SaSerializerForBase64UsePeriodicTable());
@@ -129,7 +129,7 @@ public class SaSerializerTemplateTest {
         testNull();
     }
 
-    // 测试：SaSerializerForBase64UseSpecialSymbols
+    /** 测试 Base64 特殊符号序列化往返 */
     @Test
     public void testSaSerializerForBase64UseSpecialSymbols() {
         SaManager.setSaSerializerTemplate(new SaSerializerForBase64UseSpecialSymbols());
@@ -148,7 +148,7 @@ public class SaSerializerTemplateTest {
         testNull();
     }
 
-    // 测试：SaSerializerForBase64UseEmoji
+    /** 测试 Base64 Emoji 序列化往返 */
     @Test
     public void testSaSerializerForBase64UseEmoji() {
         SaManager.setSaSerializerTemplate(new SaSerializerForBase64UseEmoji());

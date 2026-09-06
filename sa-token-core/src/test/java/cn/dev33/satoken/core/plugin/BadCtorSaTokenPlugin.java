@@ -28,10 +28,12 @@ public class BadCtorSaTokenPlugin implements SaTokenPlugin {
 	public BadCtorSaTokenPlugin(String ignored) {
 	}
 
+	/** 空实现：这个插件只用来测构造失败，装上时什么都不做 */
 	@Override
 	public void install() {
 	}
 
+	/** 空实现：卸载时同样什么都不做 */
 	@Override
 	public void destroy() {
 	}

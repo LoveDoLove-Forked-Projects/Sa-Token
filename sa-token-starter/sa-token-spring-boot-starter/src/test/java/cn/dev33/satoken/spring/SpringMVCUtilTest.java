@@ -29,6 +29,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  */
 public class SpringMVCUtilTest {
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         RequestContextHolder.resetRequestAttributes();

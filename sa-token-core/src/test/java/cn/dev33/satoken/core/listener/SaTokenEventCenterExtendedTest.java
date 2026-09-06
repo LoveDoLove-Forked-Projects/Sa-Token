@@ -39,12 +39,14 @@ public class SaTokenEventCenterExtendedTest {
 
 	private List<cn.dev33.satoken.listener.SaTokenListener> savedListeners;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	void setUp() {
 		savedListeners = new ArrayList<>(SaTokenEventCenter.getListenerList());
 		SaTokenEventCenter.setListenerList(new ArrayList<>());
 	}
 
+	/** 每个用例结束后把测试现场清掉 */
 	@AfterEach
 	void tearDown() {
 		SaTokenEventCenter.setListenerList(savedListeners);

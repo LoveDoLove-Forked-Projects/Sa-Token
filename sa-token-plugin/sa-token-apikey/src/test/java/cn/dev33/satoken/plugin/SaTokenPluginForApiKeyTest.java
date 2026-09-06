@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SaTokenPluginForApiKeyTest {
 
+    /** 用例结束后清掉全局状态 */
     @AfterEach
     public void cleanup() {
         SaAnnotationStrategy.instance.removeAnnotationHandler(SaCheckApiKey.class);

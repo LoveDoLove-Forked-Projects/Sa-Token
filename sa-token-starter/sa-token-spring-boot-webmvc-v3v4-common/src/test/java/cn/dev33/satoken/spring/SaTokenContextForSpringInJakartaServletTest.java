@@ -37,6 +37,7 @@ public class SaTokenContextForSpringInJakartaServletTest {
 
     private final SaTokenContextForSpringInJakartaServlet context = new SaTokenContextForSpringInJakartaServlet();
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         RequestContextHolder.resetRequestAttributes();

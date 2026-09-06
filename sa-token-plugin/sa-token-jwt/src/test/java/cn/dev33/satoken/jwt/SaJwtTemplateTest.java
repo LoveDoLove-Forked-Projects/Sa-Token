@@ -43,6 +43,7 @@ public class SaJwtTemplateTest {
 
     private SaJwtTemplate template;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void beforeEach() {
         template = new SaJwtTemplate();

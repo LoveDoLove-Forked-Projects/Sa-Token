@@ -49,6 +49,7 @@ public class SaCheckApiKeyHandlerTest {
     private SaApiKeyDataLoader backupLoader;
     private SaApiKeyTemplate backupTemplate;
 
+    /** 把全局状态恢复回去 */
     @BeforeEach
     public void backup() {
         backupConfig = SaApiKeyManager.getConfig();
@@ -58,6 +59,7 @@ public class SaCheckApiKeyHandlerTest {
         SaApiKeyManager.setSaApiKeyTemplate(new SaApiKeyTemplate());
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaApiKeyManager.setConfig(backupConfig);

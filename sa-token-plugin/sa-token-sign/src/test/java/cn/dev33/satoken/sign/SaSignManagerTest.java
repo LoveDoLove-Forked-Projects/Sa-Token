@@ -37,6 +37,7 @@ public class SaSignManagerTest {
     private Map<String, SaSignConfig> backupSignMany;
     private SaSignTemplate backupTemplate;
 
+    /** 先把全局状态存一份，避免用例互相污染 */
     @BeforeEach
     public void backup() {
         backupConfig = SaSignManager.getConfig();
@@ -44,6 +45,7 @@ public class SaSignManagerTest {
         backupTemplate = SaSignManager.getSaSignTemplate();
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaSignManager.setConfig(backupConfig);

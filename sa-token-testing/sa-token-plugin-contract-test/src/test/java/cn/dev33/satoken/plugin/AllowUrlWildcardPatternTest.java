@@ -44,18 +44,21 @@ public class AllowUrlWildcardPatternTest {
 	private SaSsoServerConfig backupSsoServerConfig;
 	private SaOAuth2ServerConfig backupOAuth2ServerConfig;
 
+	/** 先把 Manager 全局状态存一份 */
 	@BeforeEach
 	public void backupManagers() {
 		backupSsoServerConfig = SaSsoManager.getServerConfig();
 		backupOAuth2ServerConfig = SaOAuth2Manager.getServerConfig();
 	}
 
+	/** 把 Manager 全局状态恢复回去 */
 	@AfterEach
 	public void restoreManagers() {
 		SaSsoManager.setServerConfig(backupSsoServerConfig);
 		SaOAuth2Manager.setServerConfig(backupOAuth2ServerConfig);
 	}
 
+	/** OAuth2 allowUrl 带通配符时应该能匹配对应回调地址 */
 	@Test
 	public void oauth2AllowUrlWildcardPattern() {
 		Assertions.assertDoesNotThrow(() ->
@@ -72,6 +75,7 @@ public class AllowUrlWildcardPatternTest {
 						Collections.singletonList("http://*.sa-sso-client1.com/")));
 	}
 
+	/** SSO allowUrl 带通配符时应该能匹配对应回调地址 */
 	@Test
 	public void ssoAllowUrlWildcardPattern() {
 		Assertions.assertDoesNotThrow(() ->
@@ -85,6 +89,7 @@ public class AllowUrlWildcardPatternTest {
 						Collections.singletonList("http://sa-sso-client1.com:9003*")));
 	}
 
+	/** OAuth2 回调地址带 @ 时必须拒绝 */
 	@Test
 	public void oauth2RejectAtInRedirectUri() {
 		SaOAuth2Template template = new SaOAuth2Template();
@@ -96,6 +101,7 @@ public class AllowUrlWildcardPatternTest {
 				template.checkRedirectUri("1001", "http://sa-oauth-client.com:123%2540sa-token.com"));
 	}
 
+	/** SSO 回调地址带 @ 时必须拒绝 */
 	@Test
 	public void ssoRejectAtInRedirectUrl() {
 		SaSsoServerTemplate template = new SaSsoServerTemplate();
@@ -107,6 +113,7 @@ public class AllowUrlWildcardPatternTest {
 				template.checkRedirectUrl("sso-client1", "http://sa-sso-client1.com:9003%2540sa-token.com"));
 	}
 
+	/** allowUrl 配 IPv6 字面量时应该能配进去 */
 	@Test
 	public void redirectUrlIpv6AllowUrlConfig() {
 		Assertions.assertDoesNotThrow(() ->
@@ -119,6 +126,7 @@ public class AllowUrlWildcardPatternTest {
 		Assertions.assertTrue(SaFoxUtil.vagueMatch("http://[2001:db8::1]:8080/*", "http://[2001:db8::1]:8080/callback"));
 	}
 
+	/** SSO 校验带中括号的 IPv6 回调地址时应该通过 */
 	@Test
 	public void ssoCheckRedirectUrl_ipv6_success() {
 		SaSsoClientModel client = new SaSsoClientModel()
@@ -135,6 +143,7 @@ public class AllowUrlWildcardPatternTest {
 				template.checkRedirectUrl("ipv6-client", "http://[2001:db8::1]:8080/callback?back=/"));
 	}
 
+	/** SSO 校验无中括号或非法 IPv6 回调地址时必须拒绝 */
 	@Test
 	public void ssoCheckRedirectUrl_ipv6_rejectUnbracketedAndIllegal() {
 		SaSsoClientModel client = new SaSsoClientModel()
@@ -157,6 +166,7 @@ public class AllowUrlWildcardPatternTest {
 				template.checkRedirectUrl("ipv6-client", "http://[::1]:9003@evil.com/sso/login"));
 	}
 
+	/** OAuth2 校验带中括号的 IPv6 回调地址时应该通过 */
 	@Test
 	public void oauth2CheckRedirectUri_ipv6_success() {
 		SaClientModel client = new SaClientModel()
@@ -173,6 +183,7 @@ public class AllowUrlWildcardPatternTest {
 				template.checkRedirectUri("ipv6-oauth2", "http://[2001:db8::1]:8080/callback"));
 	}
 
+	/** OAuth2 校验无中括号或非法 IPv6 回调地址时必须拒绝 */
 	@Test
 	public void oauth2CheckRedirectUri_ipv6_rejectUnbracketedAndIllegal() {
 		SaClientModel client = new SaClientModel()

@@ -34,6 +34,7 @@ public class SaTokenDaoForHutoolTimedCacheTest {
 
     private SaTokenDaoForHutoolTimedCache dao;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void beforeEach() {
         dao = new SaTokenDaoForHutoolTimedCache();

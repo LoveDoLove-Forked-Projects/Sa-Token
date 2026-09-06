@@ -42,6 +42,7 @@ public class SaCheckELAspectTest {
 
     private SaCheckELAspect aspect;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void beforeEach() {
         aspect = new SaCheckELAspect();
@@ -51,6 +52,7 @@ public class SaCheckELAspectTest {
         aspect.setBeanFactory(beanFactory);
     }
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void afterEach() {
         // 恢复默认的 rootMap 扩展函数，避免影响其它用例

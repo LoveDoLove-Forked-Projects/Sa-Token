@@ -39,12 +39,14 @@ public class SaTokenCorsFilterForServletTest {
 
     private SaCorsHandleFunction backupCorsHandle;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void setUp() {
         ServletTestHelper.ensureServletStrategy();
         backupCorsHandle = SaStrategy.instance.corsHandle;
     }
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void tearDown() {
         SaStrategy.instance.corsHandle = backupCorsHandle;

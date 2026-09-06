@@ -29,6 +29,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SaTokenPluginHolderTest {
 
+	/** 每个用例开始前把插件状态复位 */
 	@BeforeEach
 	void resetPluginState() {
 		TestSaTokenPlugin.reset();

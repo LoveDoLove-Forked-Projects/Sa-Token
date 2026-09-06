@@ -38,7 +38,7 @@ import cn.dev33.satoken.util.SaResult;
  */
 public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
 
-	// 基础API测试 
+	/** 基础 API 应该能正常调通 */
 	@Test
 	public void testApi() {
 		// 是否命中 
@@ -64,7 +64,7 @@ public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
     	Assertions.assertTrue(SaRouter.notMatch(r -> false).isHit());
 	}
 	
-	// 各种路由测试 
+	/** 路由匹配命中和未命中时应该走到对应分支 */
 	@Test
 	public void testRouter() {
 		// getInfo 
@@ -129,7 +129,7 @@ public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
 		
 	}
 
-	// 测试 getUrl() 
+	/** getUrl 应该能拿到当前请求路径，自定义域名时应该拼上去 */
 	@Test
 	public void testGetUrl() {
 		// getInfo_101 
@@ -147,7 +147,7 @@ public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
 		SaManager.getConfig().setCurrDomain(null);
 	}
 
-	// 测试读取Cookie 
+	/** 从请求里读 Cookie 时应该能拿到对应值 */
 	@Test
 	public void testGetCookie() throws Exception {
 		MvcResult mvcResult = mockMvc.perform(
@@ -168,7 +168,7 @@ public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
 		Assertions.assertEquals(res.getData(), "token-111");
 	}
 	
-	// 测试重定向 
+	/** 重定向时应该返回 302 并带上 Location */
 	@Test
 	public void testRedirect() throws Exception {
 		MvcResult mvcResult = mockMvc.perform(
@@ -182,7 +182,7 @@ public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
 		Assertions.assertEquals(mvcResult.getResponse().getHeader("Location"), "/rt/getInfo3");
 	}
 
-	// 空接口 
+	/** 登录后访问需登录接口时应该能通过 */
 	@Test
 	public void testGetInfo200() {
 //		SaResult res = request("/rt/getInfo_200");
@@ -199,7 +199,7 @@ public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
 		Assertions.assertEquals(res3.getCode(), 200);
 	}
 
-	// 测试转发 
+	/** 请求转发时应该能转到目标接口 */
 	@Test
 	public void testForward() {
 		SaResult res = request("/rt/getInfo_103");

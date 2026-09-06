@@ -33,6 +33,7 @@ public class SaTokenDaoForCaffeineTest {
 
     private SaTokenDaoForCaffeine dao;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void beforeEach() {
         dao = new SaTokenDaoForCaffeine();

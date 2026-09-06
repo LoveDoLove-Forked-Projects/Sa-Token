@@ -32,11 +32,13 @@ public class SaApiKeyDataLoaderDefaultImplTest {
 
     private SaApiKeyConfig backupConfig;
 
+    /** 先把全局状态存一份，避免用例互相污染 */
     @BeforeEach
     public void backup() {
         backupConfig = SaApiKeyManager.getConfig();
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaApiKeyManager.setConfig(backupConfig);

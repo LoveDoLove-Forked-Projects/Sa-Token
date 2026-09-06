@@ -32,6 +32,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @SaTokenTest
 public class SaTokenContextFilterForJakartaServletTest {
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void setUp() {
         JakartaServletTestHelper.ensureServletStrategy();

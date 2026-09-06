@@ -42,6 +42,7 @@ public class StpInterfaceIsDisabledLoginTypeTest {
 	private StpLogic userLogic;
 	private StpLogic adminLogic;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	public void setUp() {
 		SaManager.setStpInterface(new StpInterface() {

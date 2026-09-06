@@ -42,11 +42,13 @@ public class SaTokenListenerForLogTest {
 
 	private SaLog previousLog;
 
+	/** 先把日志实现存一份 */
 	@BeforeEach
 	void captureLog() {
 		previousLog = SaManager.getLog();
 	}
 
+	/** 把日志实现恢复回去 */
 	@AfterEach
 	void restoreLog() {
 		SaManager.setLog(previousLog);

@@ -54,6 +54,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SaTokenTest
 public class StpUtilTest {
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	void setUp() {
 		StpUtil.stpLogic = new StpLogic(StpUtil.TYPE);

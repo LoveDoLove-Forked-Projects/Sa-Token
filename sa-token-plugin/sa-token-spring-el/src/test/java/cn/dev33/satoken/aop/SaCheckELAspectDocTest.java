@@ -52,6 +52,7 @@ public class SaCheckELAspectDocTest {
 
     private SaCheckELAspect aspect;
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void beforeEach() {
         aspect = new SaCheckELAspect();
@@ -63,6 +64,7 @@ public class SaCheckELAspectDocTest {
         SaTokenContextMockUtil.setMockContext();
     }
 
+    /** 每个用例结束后把测试现场清掉 */
     @AfterEach
     public void afterEach() {
         SaTokenContextMockUtil.clearContext();

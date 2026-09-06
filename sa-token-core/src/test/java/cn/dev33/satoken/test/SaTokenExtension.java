@@ -29,12 +29,14 @@ public class SaTokenExtension implements BeforeEachCallback, AfterEachCallback {
 
 	private SaTokenTestContext.Snapshot snapshot;
 
+	/** 每个用例开始前先拍快照，再把 SaManager 复位成干净状态 */
 	@Override
 	public void beforeEach(ExtensionContext context) {
 		snapshot = SaTokenTestContext.capture();
 		SaTokenTestContext.reset();
 	}
 
+	/** 每个用例结束后把 SaManager 恢复成用例开始前的样子 */
 	@Override
 	public void afterEach(ExtensionContext context) {
 		if (snapshot != null) {

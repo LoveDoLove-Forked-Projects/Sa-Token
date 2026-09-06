@@ -43,6 +43,7 @@ public class StpLogicLoginTest {
 
 	private StpLogic stpLogic;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	void setUp() {
 		stpLogic = new StpLogic("login");

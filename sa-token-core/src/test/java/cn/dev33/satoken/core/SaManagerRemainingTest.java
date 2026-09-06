@@ -49,12 +49,14 @@ public class SaManagerRemainingTest {
 
 	private SaGetSaTokenConfigFunction savedGetSaTokenConfig;
 
+	/** 把策略状态恢复回去 */
 	@BeforeEach
 	void clearStrategyConfigOverride() {
 		savedGetSaTokenConfig = SaStrategy.instance.getSaTokenConfig;
 		SaStrategy.instance.getSaTokenConfig = null;
 	}
 
+	/** 把策略状态恢复回去 */
 	@AfterEach
 	void restoreStrategy() {
 		SaStrategy.instance.getSaTokenConfig = savedGetSaTokenConfig;

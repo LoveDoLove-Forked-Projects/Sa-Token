@@ -30,6 +30,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 @SaTokenTest
 public class SaTokenContextServletUtilTest {
 
+    /** 每个用例开始前准备测试现场 */
     @BeforeEach
     public void setUp() {
         ServletModelTestSupport.ensureServletStrategy();

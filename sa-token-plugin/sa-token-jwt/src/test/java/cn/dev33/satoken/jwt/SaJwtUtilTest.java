@@ -43,11 +43,13 @@ public class SaJwtUtilTest {
     /** 备份原 saJwtTemplate，测完恢复，避免影响其它用例 */
     private SaJwtTemplate backupTemplate;
 
+    /** 先把全局状态存一份，避免用例互相污染 */
     @BeforeEach
     public void backup() {
         backupTemplate = SaJwtUtil.getSaJwtTemplate();
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaJwtUtil.setSaJwtTemplate(backupTemplate);

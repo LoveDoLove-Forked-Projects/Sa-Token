@@ -41,6 +41,7 @@ public class SaSsoClientTemplateSsoLogoutTest {
 	private SaJsonTemplate backupJsonTemplate;
 	private SaSsoClientTemplate template;
 
+	/** 每个用例开始前准备测试现场 */
 	@BeforeEach
 	public void setup() {
 		backupClientConfig = SaSsoManager.getClientConfig();
@@ -53,12 +54,14 @@ public class SaSsoClientTemplateSsoLogoutTest {
 		template = new SaSsoClientTemplate();
 	}
 
+	/** 把全局状态恢复回去 */
 	@AfterEach
 	public void restore() {
 		SaSsoManager.setClientConfig(backupClientConfig);
 		SaManager.setSaJsonTemplate(backupJsonTemplate);
 	}
 
+	/** 本地已登录时推注销应该带上 loginId */
 	@Test
 	public void pushSignout_withLocalLoginId() {
 		AtomicReference<String> pushedUrl = new AtomicReference<>();
@@ -74,6 +77,7 @@ public class SaSsoClientTemplateSsoLogoutTest {
 		Assertions.assertTrue(pushedUrl.get().contains("client=sso-client3"));
 	}
 
+	/** 推注销前应该把本地 loginId 转成中心 id */
 	@Test
 	public void convertLocalLoginIdToCenterId_beforePush() {
 		AtomicReference<String> pushedUrl = new AtomicReference<>();
@@ -89,6 +93,7 @@ public class SaSsoClientTemplateSsoLogoutTest {
 		Assertions.assertFalse(pushedUrl.get().contains("loginId=Stu10002"));
 	}
 
+	/** 服务端拒绝注销时必须抛 CODE_30006 */
 	@Test
 	public void throw30006_whenServerReject() {
 		template.strategy.sendRequest = url -> "{\"code\":500,\"msg\":\"注销失败\"}";

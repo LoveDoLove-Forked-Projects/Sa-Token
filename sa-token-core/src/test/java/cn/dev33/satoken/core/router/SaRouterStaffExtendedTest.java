@@ -39,6 +39,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class SaRouterStaffExtendedTest {
 
+	/** 装上测试用的路由匹配器 */
 	@BeforeAll
 	static void installRouteMatcher() {
 		SaTestRouteMatcher.installAntStyleMatcher();

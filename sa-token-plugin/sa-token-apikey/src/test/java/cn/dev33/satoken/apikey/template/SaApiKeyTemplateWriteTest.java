@@ -39,6 +39,7 @@ public class SaApiKeyTemplateWriteTest {
     private SaApiKeyDataLoader backupLoader;
     private SaApiKeyTemplate backupTemplate;
 
+    /** 把全局状态恢复回去 */
     @BeforeEach
     public void backup() {
         backupConfig = SaApiKeyManager.getConfig();
@@ -47,6 +48,7 @@ public class SaApiKeyTemplateWriteTest {
         SaApiKeyManager.setConfig(new SaApiKeyConfig().setIsRecordIndex(false));
     }
 
+    /** 把全局状态恢复回去 */
     @AfterEach
     public void restore() {
         SaApiKeyManager.setConfig(backupConfig);

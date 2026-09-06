@@ -61,6 +61,7 @@ public class SaFirewallHooksTest {
 	private List<String> originalNotAllowParameterNames;
 	private List<String> originalAllowMethods;
 
+	/** 先把防火墙钩子状态存一份 */
 	@BeforeEach
 	void saveHookState() {
 		originalBannedPercentage = SaFirewallCheckHookForPathBannedCharacter.instance.bannedPercentage;
@@ -75,6 +76,7 @@ public class SaFirewallHooksTest {
 		originalAllowMethods = new ArrayList<>(SaFirewallCheckHookForHttpMethod.instance.allowMethods);
 	}
 
+	/** 把防火墙钩子状态恢复回去 */
 	@AfterEach
 	void restoreHookState() {
 		SaFirewallCheckHookForPathBannedCharacter.instance.bannedPercentage = originalBannedPercentage;

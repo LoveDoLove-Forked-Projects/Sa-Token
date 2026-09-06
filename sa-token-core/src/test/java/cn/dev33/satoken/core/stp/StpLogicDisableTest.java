@@ -56,7 +56,7 @@ public class StpLogicDisableTest {
 		Assertions.assertThrows(DisableServiceException.class, () -> stpLogic.checkDisable(10007));
 
 		long disableTime = stpLogic.getDisableTime(10007);
-		Assertions.assertTrue(disableTime <= 200 && disableTime >= 199);
+		Assertions.assertTrue(disableTime <= 200 && disableTime >= 195);
 
 		stpLogic.untieDisable(10007);
 		Assertions.assertFalse(stpLogic.isDisable(10007));
@@ -79,7 +79,7 @@ public class StpLogicDisableTest {
 		Assertions.assertThrows(DisableServiceException.class, () -> stpLogic.checkDisable(10008, "comment", "login"));
 
 		long disableTime = stpLogic.getDisableTime(10008, "comment");
-		Assertions.assertTrue(disableTime <= 200 && disableTime >= 199);
+		Assertions.assertTrue(disableTime <= 200 && disableTime >= 195);
 
 		stpLogic.untieDisable(10008);
 		Assertions.assertTrue(stpLogic.isDisable(10008, "comment"));

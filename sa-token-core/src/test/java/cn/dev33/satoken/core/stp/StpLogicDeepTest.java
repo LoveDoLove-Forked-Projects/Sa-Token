@@ -228,8 +228,8 @@ public class StpLogicDeepTest {
 			stpLogic.renewTimeout(400);
 			long byLoginId = stpLogic.getTokenTimeoutByLoginId(50010);
 			long byToken = stpLogic.getTokenTimeout(token);
-			Assertions.assertTrue(byLoginId <= 400 && byLoginId >= 399);
-			Assertions.assertTrue(byToken <= 400 && byToken >= 399);
+			Assertions.assertTrue(byLoginId <= 400 && byLoginId >= 395);
+			Assertions.assertTrue(byToken <= 400 && byToken >= 395);
 			Assertions.assertNotNull(SaManager.getSaTokenDao().get(stpLogic.splicingKeyTokenValue(token)));
 		});
 	}

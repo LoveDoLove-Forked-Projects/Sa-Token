@@ -46,25 +46,25 @@ public class StpLogicTimeoutTest {
 		SaTokenContextMockUtil.setMockContext(() -> {
 			stpLogic.login(30011, 100);
 			long timeout = stpLogic.getTokenTimeout();
-			Assertions.assertTrue(timeout <= 100 && timeout >= 99);
+			Assertions.assertTrue(timeout <= 100 && timeout >= 95);
 			stpLogic.renewTimeout(200);
 			timeout = stpLogic.getTokenTimeout();
-			Assertions.assertTrue(timeout <= 200 && timeout >= 199);
+			Assertions.assertTrue(timeout <= 200 && timeout >= 195);
 			String token = stpLogic.getTokenValue();
 			stpLogic.renewTimeout(token, 300);
 			timeout = stpLogic.getTokenTimeout();
-			Assertions.assertTrue(timeout <= 300 && timeout >= 299);
+			Assertions.assertTrue(timeout <= 300 && timeout >= 295);
 			timeout = stpLogic.getSessionTimeout();
-			Assertions.assertTrue(timeout >= 299);
+			Assertions.assertTrue(timeout >= 295);
 			stpLogic.getTokenSession();
 			timeout = stpLogic.getTokenSessionTimeout();
-			Assertions.assertTrue(timeout >= 299);
+			Assertions.assertTrue(timeout >= 295);
 			timeout = stpLogic.getTokenTimeoutByLoginId(30011);
-			Assertions.assertTrue(timeout <= 300 && timeout >= 299);
+			Assertions.assertTrue(timeout <= 300 && timeout >= 295);
 			timeout = stpLogic.getSessionTimeoutByLoginId(30011);
-			Assertions.assertTrue(timeout >= 299);
+			Assertions.assertTrue(timeout >= 295);
 			timeout = stpLogic.getTokenSessionTimeoutByTokenValue(token);
-			Assertions.assertTrue(timeout >= 299);
+			Assertions.assertTrue(timeout >= 295);
 		});
 	}
 

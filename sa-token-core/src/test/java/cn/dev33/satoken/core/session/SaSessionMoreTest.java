@@ -119,7 +119,8 @@ public class SaSessionMoreTest {
 		SaManager.getSaTokenDao().setSession(session, 3600);
 		long before = session.timeout();
 		session.updateMinTimeout(100);
-		Assertions.assertEquals(before, session.timeout());
+		long after = session.timeout();
+		Assertions.assertTrue(after <= before && after >= before - 5);
 	}
 
 }

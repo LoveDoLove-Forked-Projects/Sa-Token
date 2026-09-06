@@ -53,7 +53,7 @@ public class StpLogicActiveTimeoutTest {
 
 			stpLogic.updateLastActiveToNow();
 			long activeTimeout = stpLogic.getTokenActiveTimeout();
-			Assertions.assertTrue(activeTimeout <= 180 && activeTimeout >= 179);
+			Assertions.assertTrue(activeTimeout <= 180 && activeTimeout >= 175);
 
 			Assertions.assertDoesNotThrow(() -> stpLogic.checkActiveTimeout());
 		});

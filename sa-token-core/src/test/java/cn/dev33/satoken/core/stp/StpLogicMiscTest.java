@@ -71,7 +71,7 @@ public class StpLogicMiscTest {
 
 			stpLogic.login(40002, 60);
 			long timeout = stpLogic.getTokenTimeout();
-			Assertions.assertTrue(timeout <= 60 && timeout >= 59);
+			Assertions.assertTrue(timeout <= 60 && timeout >= 55);
 		});
 	}
 

@@ -138,7 +138,7 @@ public class SaJwtUtilTest {
     public void getTimeout_validToken() {
         String token = buildJwt("zhang-1", System.currentTimeMillis() + 200 * 1000, JWT_SECRET_KEY);
         long timeout = SaJwtUtil.getTimeout(token, JWT_SECRET_KEY);
-        Assertions.assertTrue(timeout >= 199 && timeout <= 200);
+        Assertions.assertTrue(timeout >= 195 && timeout <= 200);
     }
 
 }

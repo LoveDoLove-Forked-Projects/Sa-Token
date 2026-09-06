@@ -16,7 +16,6 @@
 package cn.dev33.satoken.integration.boot2.plugin;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -26,20 +25,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.integration.boot2.support.AbstractMockMvcIntegrationTest;
 import cn.dev33.satoken.integration.boot2.support.MockMvcSaResultClient;
-import cn.dev33.satoken.integration.boot2.support.ServletPathContextSupport;
 import cn.dev33.satoken.util.SaResult;
 
 /**
  * SaRequest API 与 Http Basic 认证集成测试。
  */
 public class MoreIntegrationTest extends AbstractMockMvcIntegrationTest {
-
-	@BeforeEach
-	@Override
-	public void setUpMockMvc() {
-		super.setUpMockMvc();
-		ServletPathContextSupport.applyServletPathWorkaround();
-	}
 
 	// 基础API测试 
 	@Test

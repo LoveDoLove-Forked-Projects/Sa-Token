@@ -21,7 +21,6 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -30,7 +29,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.integration.boot2.support.AbstractMockMvcIntegrationTest;
-import cn.dev33.satoken.integration.boot2.support.ServletPathContextSupport;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.router.SaRouterStaff;
 import cn.dev33.satoken.util.SaResult;
@@ -39,13 +37,6 @@ import cn.dev33.satoken.util.SaResult;
  * SaRouter 路由拦截集成测试（/rt/** 端点）。
  */
 public class RouterIntegrationTest extends AbstractMockMvcIntegrationTest {
-
-	@BeforeEach
-	@Override
-	public void setUpMockMvc() {
-		super.setUpMockMvc();
-		ServletPathContextSupport.applyServletPathWorkaround();
-	}
 
 	// 基础API测试 
 	@Test

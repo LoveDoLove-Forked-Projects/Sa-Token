@@ -59,7 +59,9 @@ public class AutoConfigurationIntegrationTest {
                 SaStrategy.instance.createSaResponse.apply(exchange.getResponse()));
         Assertions.assertInstanceOf(SaStorageForReactor.class,
                 SaStrategy.instance.createSaStorage.apply(exchange));
-        Assertions.assertTrue(SaStrategy.instance.routeMatcher.apply("/**", "/any/path"));
+        // 路由匹配器应被重写为 PathPatternParser，能识别生产常用的路径变量模式
+        Assertions.assertTrue(SaStrategy.instance.routeMatcher.apply("/rt/{id}", "/rt/101"));
+        Assertions.assertFalse(SaStrategy.instance.routeMatcher.apply("/rt/{id}", "/acc/isLogin"));
     }
 
 }

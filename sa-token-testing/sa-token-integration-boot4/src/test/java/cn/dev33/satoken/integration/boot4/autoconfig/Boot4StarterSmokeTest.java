@@ -16,15 +16,19 @@
 package cn.dev33.satoken.integration.boot4.autoconfig;
 
 import cn.dev33.satoken.config.SaTokenConfig;
+import cn.dev33.satoken.filter.SaFirewallCheckFilterForJakartaServlet;
+import cn.dev33.satoken.filter.SaTokenContextFilterForJakartaServlet;
 import cn.dev33.satoken.integration.boot4.IntegrationBoot4Application;
+import cn.dev33.satoken.spring.SaTokenContextRegister;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.ApplicationContext;
 
 /**
- * Boot 4 Starter 冒烟测试：只验证容器能启动且核心 Bean 存在，不重复 boot2 的全量集成。
+ * Boot 4 Starter 冒烟测试：验证容器能启动，且 Jakarta Servlet 自动配置 Bean 已注册。
  */
 @SpringBootTest(classes = IntegrationBoot4Application.class)
 public class Boot4StarterSmokeTest {
@@ -43,6 +47,18 @@ public class Boot4StarterSmokeTest {
     public void saTokenConfig_shouldBindFromApplicationYml() {
         SaTokenConfig config = applicationContext.getBean(SaTokenConfig.class);
         Assertions.assertEquals("satoken", config.getTokenName());
+    }
+
+    /** Jakarta Servlet 上下文注册器与核心 Filter 应该作为 Bean 存在 */
+    @Test
+    @SuppressWarnings("unchecked")
+    public void jakartaServletBeans_shouldBeRegistered() {
+        Assertions.assertNotNull(applicationContext.getBean(SaTokenContextRegister.class));
+        Assertions.assertNotNull(applicationContext.getBean(SaFirewallCheckFilterForJakartaServlet.class));
+
+        boolean contextFilterRegistered = applicationContext.getBeansOfType(FilterRegistrationBean.class).values().stream()
+                .anyMatch(bean -> bean.getFilter() instanceof SaTokenContextFilterForJakartaServlet);
+        Assertions.assertTrue(contextFilterRegistered, "SaTokenContextFilterForJakartaServlet 应该通过 FilterRegistrationBean 注册");
     }
 
 }

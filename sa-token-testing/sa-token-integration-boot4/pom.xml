@@ -32,6 +32,17 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!-- 对齐 sa-token-jackson3 传递的 jackson-databind 3.1.0（Boot 4.0.3 BOM 只管理到 jackson-core 3.0.4，混用会导致静态初始化失败） -->
+			<dependency>
+				<groupId>tools.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.21</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -40,9 +51,10 @@
 			<groupId>cn.dev33</groupId>
 			<artifactId>sa-token-spring-boot4-starter</artifactId>
 		</dependency>
+		<!-- 模拟真实 Boot 4 应用：引入 web 完整栈，走 Jakarta Servlet 请求链路 -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -54,15 +66,9 @@
 
 	<build>
 		<plugins>
-			<!-- TODO: 同 boot3，待 v2v3v4-common classpath 冲突修复后启用 autoconfig/ 冒烟测试 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/autoconfig/*</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

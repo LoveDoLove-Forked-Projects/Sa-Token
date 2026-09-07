@@ -83,6 +83,11 @@
 				<artifactId>sa-token-http-test-common</artifactId>
 				<version>${revision}</version>
 			</dependency>
+			<dependency>
+				<groupId>cn.dev33</groupId>
+				<artifactId>sa-token-redis-dao-test-common</artifactId>
+				<version>${revision}</version>
+			</dependency>
 
 			<!-- ****************** sa-token-starter 相关依赖 ****************** -->
 	        <!-- Servlet API -->

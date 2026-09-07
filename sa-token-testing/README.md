@@ -20,6 +20,13 @@
 - sa-token-snack3
 - sa-token-snack4
 
+### sa-token-redis-dao-test-common
+
+测试支持（无 `@Test`），供 Redis Dao 插件单测复用：
+
+- sa-token-redisson
+- sa-token-redisx
+
 ### sa-token-http-test-common
 
 测试支持（无 `@Test`），供 HTTP 客户端插件单测复用：
